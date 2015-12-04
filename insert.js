@@ -6,8 +6,6 @@ start();
 function start() {
 	connection.getConnection(function (err, conn) {
 		if (err) return console.error(err);
-		while (true) {
-			setTimeout(function () {
 				var object = getObject();
 				object.floors[0]["3A"].people =
 					getRandomNumberBetween(0, 100);
@@ -21,7 +19,7 @@ function start() {
 					getRandomNumberBetween(0, 50);
 				object.floors[0]["3C"].soundLevel =
 					getRandomNumberBetween(0, 50);
-				r.table('test1').insert(object).run(conn,
+				r.db('people_density').table('test1').insert(object).run(conn,
 					function(err, result){
 						if (err) {
 							console.error('Couldn\'t insert: ' + err);
@@ -29,9 +27,7 @@ function start() {
 							console.log('Successfully inserted');
 							console.log(result);
 						}
-					})
-			}, 5000);
-		}
+				});
 	});
 }
 

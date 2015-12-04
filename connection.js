@@ -9,10 +9,13 @@ connectionObject.getConnection = function(callback) {
 		return callback(null, connection)
 	}
 	r.connect( {host: 'localhost', port: 28015}, function(err, conn) {
-    	if (err) return callback(err, null);
-    	connection = conn;
-		callback(null, connection);
-	})	
+    	if (err) {
+				callback(err, null);
+			} else {
+				connection = conn;
+				callback(null, connection);
+			}
+	})
 };
 
 module.exports = connectionObject;
