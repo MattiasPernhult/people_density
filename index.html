@@ -3,9 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>Visual people density</title>
+  <script src="jquery-1.11.3.min"></script>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
     $document.ready(function(){
-
+        var socket = io();
+        socket.on('message', function(message) {
+          alert(message);
+        });
+        socket.on('data', function(data) {
+          alert(data);
+        });
       })
   </script>
   <style>
@@ -13,7 +21,7 @@
       font-family: sans-serif;
       font-weight: lighter;
     }
-    
+
     .floor {
       height: 100px;
       width: 200px;
@@ -23,7 +31,7 @@
       border-radius: 5px;
       margin-top: 100px;
     }
-    
+
     h1 {
       margin-top: 100px;
       text-align: center;
@@ -36,16 +44,6 @@
     <h1>People on the floor</h1>
     <div class="floor"></div>
   </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io();
-    socket.on('message', function(message) {
-      alert(message);
-    });
-    socket.on('data', function(data) {
-      alert(data);
-    });
-  </script>
 </body>
 
 </html>
