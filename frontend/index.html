@@ -1,21 +1,7 @@
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Visual people density</title>
-  <script src="jquery-1.11.3.min"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    $document.ready(function(){
-        var socket = io();
-        socket.on('message', function(message) {
-          alert(message);
-        });
-        socket.on('data', function(data) {
-          alert(data);
-        });
-      })
-  </script>
   <style>
     body {
       font-family: sans-serif;
@@ -43,6 +29,17 @@
   <div id="wrapper">
     <h1>People on the floor</h1>
     <div class="floor"></div>
+    <script src="jquery-1.11.3.min"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+    socket.on('message', function(message) {
+      alert(message);
+    });
+    socket.on('data', function(data) {
+      alert(data);
+    });
+  </script>
   </div>
 </body>
 
