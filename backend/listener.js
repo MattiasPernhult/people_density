@@ -2,11 +2,12 @@ var r = require('rethinkdb');
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var path = require('path');
 
 var connection = require('./connection');
 
 app.get('/', function(req, res) {
-	res.sendfile('index.html');
+	res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 var sockets = [];
