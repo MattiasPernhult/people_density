@@ -9,8 +9,14 @@ app.get('/', function(req, res) {
 	res.sendfile('index.html');
 });
 
+var sockets = [];
+
+start();
+
 io.on('connection', function(socket) {
 	console.log('a user is connected');
+	socket.emit('message', "APAN");
+	sockets.push(socket);
 });
 
 http.listen(3000, function() {
@@ -25,6 +31,9 @@ function start() {
 				cursor.each(function (err, row) {
 					if (err) throw err;
 					console.log(JSON.stringify(row, null, 2));
+					for (var i = 0; i < sockets.length; i++) {
+						sockets[i].emit('data', JSON.stringify(row, null, 2));
+					}
 				});
 			});
 		}
