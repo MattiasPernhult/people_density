@@ -30,7 +30,7 @@ After this you should have a database named 'people_density', then run this comm
 r.db('people_density').tableCreate('test1')
 ```
 
-After this everything with the rethinkdb is setted up.
+After this everything with the rethinkdb is installed and set up.
 
 #### 3. Starting the scripts
 First you must start the listening script by standing in the root path and running
