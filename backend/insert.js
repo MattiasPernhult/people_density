@@ -1,17 +1,23 @@
 var r = require('rethinkdb');
 var connection = require('./connection');
 var rConn = null;
+var interval = process.env.INTERVAL;
 start();
 
 function start() {
 	connection.getConnection(function (err, conn) {
+		// if there is an error log it and return
 		if (err) return console.error(err);
 		rConn = conn;
 		insertData();
-		setInterval(insertData, 5000);
+		if (interval === undefined) {
+			interval = 5000;
+		}
+		setInterval(insertData, interval);
 	});
 }
 
+// this function will create a new object with random numbers and insert it into rethinkdb
 function insertData() {
 	var object = getObject();
 	object.floors[0]["3A"].people = getRandomNumberBetween(0, 100);
@@ -30,10 +36,12 @@ function insertData() {
 	});
 }
 
+// this function will return a random number between low and high parameter
 function getRandomNumberBetween(low, high) {
 	return Math.floor((Math.random() * high) + low);
 }
 
+// this function will return a skeleton object that will be used to insert into rethinkdb
 function getObject() {
 	var jsonObject = {
 		floors: [
