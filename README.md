@@ -16,7 +16,7 @@ To run this project you must follow this steps listed bellow.
 #### 1. Installing the rethinkdb
 First of all you need to install the rethinkdb on your computer: https://www.rethinkdb.com/docs/install
 
-Once installed you can start it by running rethinkdb in the terminal.
+Once installed you can start it by running **rethinkdb** in the terminal.
 
 #### 2. Setting up a database and table
 Once you started the rethinkdb, you should be able to go to the admin page through localhost:8080.
