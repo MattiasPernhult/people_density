@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+  font-weight: lighter;
+}
+.floor {
+  height: 100px;
+  width: 300px;
+  border: 1px solid black;
+  margin: 0 auto 0 auto;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+.section{
+  list-style-type: none;
+  height: 30px;
+  width: 65px;
+  border: 1px solid black;
+  float: left;
+  display: inline-block;
+  border-radius: 2px;
+  text-align: center;
+  margin: 0 0 10px 5px;
+}
+.section p{
+  margin-top: 6px;
+}
+.section span{
+  height: 30px;
+  width: 65px;
+  background-color: black;
+}
+
+h1 {
+  margin-top: 100px;
+  text-align: center;
+}
+h4{
+  text-align: center;
+}
