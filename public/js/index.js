@@ -4,16 +4,17 @@ $(document).ready(function() {
   socket.on('data', function(data) {
     var json = JSON.parse(data);
 
+    console.log(json.new_val.floors[0]);
     var peopleValuesObj = {
-      '0': (json.new_val.floors[0]['3A'].people)/100,
-      '1': (json.new_val.floors[0]['3B'].people)/100,
-      '2': (json.new_val.floors[0]['3C'].people)/100
+      '0': (json.new_val.floors[0].People)/100,
+      '1': (json.new_val.floors[1].People)/100,
+      '2': (json.new_val.floors[2].People)/100
     };
 
     var soundValuesObj = {
-      '0': (json.new_val.floors[0]['3A'].soundLevel),
-      '1': (json.new_val.floors[0]['3B'].soundLevel),
-      '2': (json.new_val.floors[0]['3C'].soundLevel)
+      '0': (json.new_val.floors[0].SoundLevel),
+      '1': (json.new_val.floors[1].SoundLevel),
+      '2': (json.new_val.floors[2].SoundLevel)
     };
 
     $.each(peopleValuesObj, function(i, val){
