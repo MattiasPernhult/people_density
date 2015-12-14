@@ -35,24 +35,24 @@ After this everything with the rethinkdb is installed and set up.
 #### 3. Starting the scripts
 First you must start the listening script by standing in the root path and running
 ``` bash
-node backend/listener.js
+node src/listener.js
 ```
 This will start the server and you can go to localhost:3000
 
 Then run the second script to start inserting random data, just for testing.
 ``` bash
-node backend/insert.js
+node src/insert.js
 ```
 
 This will start a infinite loop to insert new data each 5000 ms as this is the default, you can tweak the interval by
 providing a process environment variable INTERVAL
 ``` bash
-INTERVAL=<milliseconds> node backend/insert.js
+INTERVAL=<milliseconds> node src/insert.js
 ```
 
 for example,
 ``` bash
-INTERVAL=10000 node backend/insert.js
+INTERVAL=10000 node src/insert.js
 ```
 
 and this will insert new data each 10 seconds.
