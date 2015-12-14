@@ -20,12 +20,15 @@ function start() {
 // this function will create a new object with random numbers and insert it into rethinkdb
 function insertData() {
 	var object = getObject();
-	object.floors[0]["3A"].people = getRandomNumberBetween(0, 100);
-	object.floors[0]["3B"].people = getRandomNumberBetween(0, 100);
-	object.floors[0]["3C"].people = getRandomNumberBetween(0, 100);
-	object.floors[0]["3A"].soundLevel = getRandomNumberBetween(0, 50);
-	object.floors[0]["3B"].soundLevel = getRandomNumberBetween(0, 50);
-	object.floors[0]["3C"].soundLevel = getRandomNumberBetween(0, 50);
+	object.floors[0].People = getRandomNumberBetween(0, 100);
+	object.floors[1].People = getRandomNumberBetween(0, 100);
+	object.floors[2].People = getRandomNumberBetween(0, 100);
+	object.floors[0].Name = "3A";
+	object.floors[1].Name = "3B";
+	object.floors[2].Name = "3C";
+	object.floors[0].SoundLevel = getRandomNumberBetween(0, 50);
+	object.floors[1].SoundLevel = getRandomNumberBetween(0, 50);
+	object.floors[2].SoundLevel = getRandomNumberBetween(0, 50);
 	r.db('people_density').table('test1').insert(object).run(rConn, function (err, result) {
 		if (err) {
 			console.error('Couldn\'t insert: ' + err);
@@ -46,18 +49,19 @@ function getObject() {
 	var jsonObject = {
 		floors: [
 			{
-				"3A": {
-					"people": undefined,
-					"soundLevel": undefined
-				},
-				"3B": {
-					"people": undefined,
-					"soundLevel": undefined
-				},
-				"3C": {
-					"people": undefined,
-					"soundLevel": undefined
-				}
+				"Name": undefined,
+				"People": undefined,
+				"SoundLevel": undefined
+			},
+			{
+				"Name": undefined,
+				"People": undefined,
+				"SoundLevel": undefined
+			},
+			{
+				"Name": undefined,
+				"People": undefined,
+				"SoundLevel": undefined
 			}
 		]
 	};
