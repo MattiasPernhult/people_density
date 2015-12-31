@@ -5,7 +5,7 @@ This is a project for the course Internet and Things and People, that aim to vis
 building at Malmö University.
 
 ## Getting the source code
-Stand in a directory where you want to add the project, then run following command
+Stand in a directory where you want to add the project, then run following command.
 ``` bash
 git clone https://github.com/MattiasPernhult/people_density.git
 ```
