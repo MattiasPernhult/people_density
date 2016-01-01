@@ -22,9 +22,18 @@ start();
 // will handle each client that connects to the server via the basic endpoint
 // will add it to the sockets array
 io.on('connection', function(socket) {
-	console.log('a user is connected');
-	socket.emit('message', "APAN");
+	console.log('user ' + socket.id + ' is connected');
 	sockets.push(socket);
+	socket.on('disconnect', function() {
+		console.log('user ' + socket.id + ' is disconnected');
+		for (var i = 0; i < sockets.length; i++) {
+			if (sockets[i].id == socket.id) {
+				sockets.splice(i, 1);
+				console.log('user ' + socket.id + ' is removed from sockets list');
+				break;
+			}
+		}
+	});
 });
 
 // the server will listening on calls on localhost and port 3000
