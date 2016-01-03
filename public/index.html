@@ -2,20 +2,62 @@
 <head>
   <meta charset="utf-8">
   <title>Visual people density</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
 </head>
 
 <body>
   <div id="wrapper">
-    <h1>People on the floor</h1>
-    <h4>The more red the section is, the more populated</h4>
-    <h4>The higher the black bar, the noiser the section</h4>
-    <div class="floor">
-      <ul>
-        <li class="section"><p>3A</p><span></span></li>
-        <li class="section"><p>3B</p><span></span></li>
-        <li class="section"><p>3C</p><span></span></li>
+    <div id="banner">
+      <img src="pics/mahlogo.png" alt="mah-logo">
+      <h1>People on the floor</h1>
+    </div>
+    <h4>Different colours represent poeople density on each section of the each floor</h4>
+    <div id="explain_box">
+      <ul id="color_explain">
+        <li>Green, means low people density.</li>
+        <li>Yellow, means medium people density.</li>
+        <li>Red, means high people density.</li>
       </ul>
+    </div>
+    <h4>The higher the black bar, the noiser the section.</h4>
+    <div id="niagara">
+      <h3>NIAGARA</h3>
+      <div class="floor">
+        <ul>
+          <li class="section"><p>6A</p><span></span></li>
+          <li class="section"><p>6B</p><span></span></li>
+          <li class="section"><p>6C</p><span></span></li>
+        </ul>
+      </div>
+      <div class="floor">
+        <ul>
+          <li class="section"><p>5A</p><span></span></li>
+          <li class="section"><p>5B</p><span></span></li>
+          <li class="section"><p>5C</p><span></span></li>
+        </ul>
+      </div>
+      <div class="floor">
+        <ul>
+          <li class="section"><p>4A</p><span></span></li>
+          <li class="section"><p>4B</p><span></span></li>
+          <li class="section"><p>4C</p><span></span></li>
+        </ul>
+      </div>
+      <div class="floor">
+        <ul>
+          <li class="section"><p>3A</p><span></span></li>
+          <li class="section"><p>3B</p><span></span></li>
+          <li class="section"><p>3C</p><span></span></li>
+        </ul>
+      </div>
+      <div class="floor">
+        <ul>
+          <li class="section"><p>2A</p><span></span></li>
+          <li class="section"><p>2B</p><span></span></li>
+          <li class="section"><p>2C</p><span></span></li>
+        </ul>
+      </div>
     </div>
   <!--<script src="jquery-1.11.3.min.js"></script>-->
   <script src="/socket.io/socket.io.js"></script>

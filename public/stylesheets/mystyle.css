@@ -1,16 +1,38 @@
 body {
-  font-family: sans-serif;
-  font-weight: lighter;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+#banner img{
+ width: 88px;
+ height: 86px;
+}
+#explain_box{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#color_explain{
+  list-style-type:lower-greek;
+  text-align: left;
+
+}
+#niagara h3{
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 295px;
+  margin: 0 auto 0 auto;
 }
 .floor {
-  height: 100px;
-  width: 300px;
+  background-color: rgba(227, 229, 227, 1);
+  height: 80px;
+  width: 295px;
   border: 1px solid black;
   margin: 0 auto 0 auto;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 .section{
+  background-color: white;
   list-style-type: none;
   height: 30px;
   width: 65px;
@@ -19,7 +41,7 @@ body {
   display: inline-block;
   border-radius: 2px;
   text-align: center;
-  margin: 0 0 10px 5px;
+  margin: 0 0 5px 5px;
 }
 .section p{
   margin-top: 6px;
@@ -31,7 +53,6 @@ body {
 }
 
 h1 {
-  margin-top: 100px;
   text-align: center;
 }
 h4{

@@ -18,12 +18,18 @@ $(document).ready(function() {
     };
 
     $.each(peopleValuesObj, function(i, val){
-      $('.section').eq(i).css('background', 'rgba(255, 0, 0, '+val+')');
+      //$('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 254, 0, '+val+')');
+      if(val < 0.45)//green
+        $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(0, 214, 103, 1');
+      else if(val < 0.75)//yellow
+        $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(246, 236, 0, 1)');
+      else//red
+        $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 0, 0, 1');
     });
 
     $.each(soundValuesObj, function(i, val){
       var newVal = val.toString() + '%';
-      $('.section span').eq(i).animate({
+      $('.floor:nth-child(5) .section span').eq(i).animate({
         height: newVal
       });
     });
