@@ -23,6 +23,7 @@ function insertData() {
 	var secondSection = getRandomNumberBetween(0, 100);
 	var thirdSection = getRandomNumberBetween(0, 100);
 	var object = getObject();
+	object.timeStamp = new Date().toUTCString();
 	object.floors[0].People = firstSection;
 	object.floors[1].People = secondSection;
 	object.floors[2].People = thirdSection;
@@ -47,6 +48,7 @@ function getRandomNumberBetween(low, high) {
 	return Math.floor((Math.random() * high) + low);
 }
 
+//This function will return a value for the soundlevel based on the generated randomNumber param.
 function getValueForSound(randomNumber){
 	return randomNumber / 2;
 }
@@ -54,6 +56,7 @@ function getValueForSound(randomNumber){
 // this function will return a skeleton object that will be used to insert into rethinkdb
 function getObject() {
 	var jsonObject = {
+		timeStamp: undefined,
 		floors: [
 			{
 				"Name": undefined,

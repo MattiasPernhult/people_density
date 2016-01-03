@@ -65,3 +65,25 @@
 2016-01-03T10:25:27.256846000 1.759966s info: Table febc7cf8-a46c-4c85-93cb-10545220e1cc: This server is Raft leader for term 3. Latest log index is 6.
 2016-01-03T10:25:27.394583000 1.897702s info: Table 19ec60b1-9324-4538-80db-b77a2368aed9: Starting a new Raft election for term 3.
 2016-01-03T10:25:27.406900000 1.910019s info: Table 19ec60b1-9324-4538-80db-b77a2368aed9: This server is Raft leader for term 3. Latest log index is 5.
+2016-01-03T13:11:45.528586000 8967.428482s notice: Server got SIGINT from pid 404, uid 501; shutting down...
+2016-01-03T13:11:45.529741000 8967.429636s notice: Shutting down client connections...
+2016-01-03T13:11:45.530963000 8967.430858s notice: All client connections closed.
+2016-01-03T13:11:45.530970000 8967.430865s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2016-01-03T13:11:45.548409000 8967.448304s notice: Storage engine shut down.
+2016-01-03T13:55:19.867578000 0.034475s notice: Running rethinkdb 2.2.1 (CLANG 7.0.0 (clang-700.1.76))...
+2016-01-03T13:55:19.888013000 0.054905s notice: Running on Darwin 15.2.0 x86_64
+2016-01-03T13:55:19.888077000 0.054967s notice: Loading data from directory /Users/fresh_musti/people_density/src/rethinkdb_data
+2016-01-03T13:55:19.921216000 0.088107s info: Automatically using cache size of 100 MB
+2016-01-03T13:55:19.921230000 0.088121s warn: Cache size does not leave much memory for server and query overhead (available memory: 548 MB).
+2016-01-03T13:55:19.921240000 0.088130s warn: Cache size is very low and may impact performance.
+2016-01-03T13:55:19.923559000 0.090449s notice: Listening for intracluster connections on port 29015
+2016-01-03T13:55:19.966967000 0.133858s notice: Listening for client driver connections on port 28015
+2016-01-03T13:55:19.967247000 0.134137s notice: Listening for administrative HTTP connections on port 8080
+2016-01-03T13:55:19.967250000 0.134140s notice: Listening on addresses: 127.0.0.1, ::1
+2016-01-03T13:55:19.967251000 0.134142s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2016-01-03T13:55:19.967253000 0.134143s notice: Server ready, "MacBook_Air_local_rc1" 61c15c8b-1a16-4f63-a0be-b42ed781a6be
+2016-01-03T13:55:20.987817000 1.154752s info: Table 19ec60b1-9324-4538-80db-b77a2368aed9: Starting a new Raft election for term 4.
+2016-01-03T13:55:21.001179000 1.168114s info: Table 19ec60b1-9324-4538-80db-b77a2368aed9: This server is Raft leader for term 4. Latest log index is 8.
+2016-01-03T13:55:21.216870000 1.383805s notice: A newer version of the RethinkDB server is available: 2.2.2. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
+2016-01-03T13:55:21.845754000 2.012688s info: Table febc7cf8-a46c-4c85-93cb-10545220e1cc: Starting a new Raft election for term 4.
+2016-01-03T13:55:21.859984000 2.026919s info: Table febc7cf8-a46c-4c85-93cb-10545220e1cc: This server is Raft leader for term 4. Latest log index is 9.

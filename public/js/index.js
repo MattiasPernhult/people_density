@@ -4,6 +4,8 @@ $(document).ready(function() {
   socket.on('data', function(data) {
     var json = JSON.parse(data);
 
+    console.log(JSON.parse(data));
+
     console.log(json.new_val.floors[0]);
     var peopleValuesObj = {
       '0': (json.new_val.floors[0].People)/100,
