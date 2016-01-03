@@ -4,10 +4,12 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
+var favicon = require('serve-favicon');
 
 var connection = require('./connection');
 
 app.use(express.static('public'));
+app.use(favicon(path.join(__dirname, '../public', 'images', 'mahlogo.png')));
 
 // basic endpoint
 app.get('/', function(req, res) {
