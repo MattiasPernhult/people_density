@@ -29,6 +29,9 @@ function insertData() {
 	object.floors[0].SoundLevel = getRandomNumberBetween(0, 50);
 	object.floors[1].SoundLevel = getRandomNumberBetween(0, 50);
 	object.floors[2].SoundLevel = getRandomNumberBetween(0, 50);
+	object.floors[0].Timestamp = "2016-01-05 15:00:00";
+	object.floors[1].Timestamp = "2016-01-05 14:00:00";
+	object.floors[2].Timestamp = "2016-01-05 12:00:00";
 	r.db('people_density').table('test1').insert(object).run(rConn, function (err, result) {
 		if (err) {
 			console.error('Couldn\'t insert: ' + err);
@@ -51,17 +54,20 @@ function getObject() {
 			{
 				"Name": undefined,
 				"People": undefined,
-				"SoundLevel": undefined
+				"SoundLevel": undefined,
+				"Timestamp": undefined
 			},
 			{
 				"Name": undefined,
 				"People": undefined,
-				"SoundLevel": undefined
+				"SoundLevel": undefined,
+				"Timestamp": undefined
 			},
 			{
 				"Name": undefined,
 				"People": undefined,
-				"SoundLevel": undefined
+				"SoundLevel": undefined,
+				"Timestamp": undefined
 			}
 		]
 	};
