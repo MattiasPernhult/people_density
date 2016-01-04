@@ -10,10 +10,6 @@ var (
 	number = 1
 )
 
-func TestWhole1(t *testing.T) {
-
-}
-
 func TestIsInsertedNeeded1(t *testing.T) {
 	changeWaitTime(0)
 	floors := []Floor{
