@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"time"
 
 	r "github.com/dancannon/gorethink"
@@ -35,8 +37,8 @@ type Floor struct {
 
 // Building struct to represent a building
 type Building struct {
-	Floors    []Floor
-	Timestamp string
+	Floors    []Floor `json:"floors"`
+	Timestamp string  `json:"timestamp"`
 }
 
 func checkError(err error) {
@@ -59,9 +61,9 @@ func SetLastInsert(f []Floor) {
 
 func main() {
 	var err error
-	session, err = r.Connect(r.ConnectOpts{
-		Address: "localhost:28015",
-	})
+	// session, err = r.Connect(r.ConnectOpts{
+	// 	Address: "localhost:28015",
+	// })
 	checkError(err)
 	files := []string{"result.json"}
 	startWatchingFiles(files)
@@ -136,7 +138,8 @@ func middleware(jsonInsert string) {
 	data := Building{b, t.Format(time.RFC3339)}
 
 	if IsInsertNeeded(data) {
-		ok := InsertDataToRethink(data)
+		//ok := InsertDataToRethink(data)
+		ok := sendDataToAPI(data)
 		if ok {
 			fmt.Printf("Data inserted: %v\n", data)
 		}
@@ -144,6 +147,27 @@ func middleware(jsonInsert string) {
 		fmt.Println("Data not inserted")
 		fmt.Printf("newData: %v\noldData: %v\n", data.Floors, lastInsertData)
 	}
+}
+
+func sendDataToAPI(data Building) bool {
+	url := "http://localhost:3000/insert"
+	dataByte, err := json.Marshal(data)
+	fmt.Println(string(dataByte))
+	checkError(err)
+	req, reqErr := http.NewRequest("POST", url, bytes.NewBuffer(dataByte))
+	checkError(reqErr)
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	response, respErr := client.Do(req)
+	checkError(respErr)
+	defer response.Body.Close()
+
+	status := response.StatusCode
+	if status == 200 {
+		return true
+	}
+	return false
 }
 
 // InsertDataToRethink will insert the data that is passed into it
