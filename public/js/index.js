@@ -1,40 +1,35 @@
 $(document).ready(function() {
-  var socket = io();
+    var socket = io();
 
-  socket.on('data', function(data) {
-    var json = JSON.parse(data);
+    socket.on('data', function(data) {
+        var peopleValuesObj = {
+            '0': (data.floors[0].people) / 100,
+            '1': (data.floors[1].people) / 100,
+            '2': (data.floors[2].people) / 100
+        };
 
-    console.log(JSON.parse(data));
+        var soundValuesObj = {
+            '0': (data.floors[0].soundLevel),
+            '1': (data.floors[1].soundLevel),
+            '2': (data.floors[2].soundLevel)
+        };
 
-    console.log(json.new_val.floors[0]);
-    var peopleValuesObj = {
-      '0': (json.new_val.floors[0].People)/100,
-      '1': (json.new_val.floors[1].People)/100,
-      '2': (json.new_val.floors[2].People)/100
-    };
+        $.each(peopleValuesObj, function(i, val) {
+            //$('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 254, 0, '+val+')');
+            if (val < 0.45) //green
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(0, 214, 103, 1');
+            else if (val < 0.75) //yellow
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(246, 236, 0, 1)');
+            else //red
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 0, 0, 1');
+        });
 
-    var soundValuesObj = {
-      '0': (json.new_val.floors[0].SoundLevel),
-      '1': (json.new_val.floors[1].SoundLevel),
-      '2': (json.new_val.floors[2].SoundLevel)
-    };
+        $.each(soundValuesObj, function(i, val) {
+            var newVal = val.toString() + '%';
+            $('.floor:nth-child(5) .section span').eq(i).animate({
+                height: newVal
+            });
+        });
 
-    $.each(peopleValuesObj, function(i, val){
-      //$('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 254, 0, '+val+')');
-      if(val < 0.45)//green
-        $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(0, 214, 103, 1');
-      else if(val < 0.75)//yellow
-        $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(246, 236, 0, 1)');
-      else//red
-        $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 0, 0, 1');
     });
-
-    $.each(soundValuesObj, function(i, val){
-      var newVal = val.toString() + '%';
-      $('.floor:nth-child(5) .section span').eq(i).animate({
-        height: newVal
-      });
-    });
-
-  });
 });
