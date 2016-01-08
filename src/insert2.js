@@ -24,15 +24,15 @@ function insertData() {
 	var thirdSection = getRandomNumberBetween(0, 100);
 	var object = getObject();
 	object.timeStamp = new Date().toUTCString();
-	object.floors[0].People = firstSection;
-	object.floors[1].People = secondSection;
-	object.floors[2].People = thirdSection;
-	object.floors[0].Name = "3A";
-	object.floors[1].Name = "3B";
-	object.floors[2].Name = "3C";
-	object.floors[0].SoundLevel = getValueForSound(firstSection);
-	object.floors[1].SoundLevel = getValueForSound(secondSection);
-	object.floors[2].SoundLevel = getValueForSound(thirdSection);
+	object.floors[0].people = firstSection;
+	object.floors[1].people = secondSection;
+	object.floors[2].people = thirdSection;
+	object.floors[0].name = "3A";
+	object.floors[1].name = "3B";
+	object.floors[2].name = "3C";
+	object.floors[0].soundLevel = getValueForSound(firstSection);
+	object.floors[1].soundLevel = getValueForSound(secondSection);
+	object.floors[2].soundLevel = getValueForSound(thirdSection);
 	r.db('people_density').table('test1').insert(object).run(rConn, function (err, result) {
 		if (err) {
 			console.error('Couldn\'t insert: ' + err);
@@ -59,19 +59,19 @@ function getObject() {
 		timeStamp: undefined,
 		floors: [
 			{
-				"Name": undefined,
-				"People": undefined,
-				"SoundLevel": undefined
+				"name": undefined,
+				"people": undefined,
+				"soundLevel": undefined
 			},
 			{
-				"Name": undefined,
-				"People": undefined,
-				"SoundLevel": undefined
+				"name": undefined,
+				"people": undefined,
+				"soundLevel": undefined
 			},
 			{
-				"Name": undefined,
-				"People": undefined,
-				"SoundLevel": undefined
+				"name": undefined,
+				"people": undefined,
+				"soundLevel": undefined
 			}
 		]
 	};

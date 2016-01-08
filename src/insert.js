@@ -20,15 +20,15 @@ function start() {
 // this function will create a new object with random numbers and insert it into rethinkdb
 function insertData() {
 	var object = getObject();
-	object.floors[0].People = getRandomNumberBetween(0, 100);
-	object.floors[1].People = getRandomNumberBetween(0, 100);
-	object.floors[2].People = getRandomNumberBetween(0, 100);
-	object.floors[0].Name = "3A";
-	object.floors[1].Name = "3B";
-	object.floors[2].Name = "3C";
-	object.floors[0].SoundLevel = getRandomNumberBetween(0, 50);
-	object.floors[1].SoundLevel = getRandomNumberBetween(0, 50);
-	object.floors[2].SoundLevel = getRandomNumberBetween(0, 50);
+	object.floors[0].people = getRandomNumberBetween(0, 100);
+	object.floors[1].people = getRandomNumberBetween(0, 100);
+	object.floors[2].people = getRandomNumberBetween(0, 100);
+	object.floors[0].name = "3A";
+	object.floors[1].name = "3B";
+	object.floors[2].name = "3C";
+	object.floors[0].soundLevel = getRandomNumberBetween(0, 50);
+	object.floors[1].soundLevel = getRandomNumberBetween(0, 50);
+	object.floors[2].soundLevel = getRandomNumberBetween(0, 50);
 	object.floors[0].Timestamp = "2016-01-05 15:00:00";
 	object.floors[1].Timestamp = "2016-01-05 14:00:00";
 	object.floors[2].Timestamp = "2016-01-05 12:00:00";
@@ -52,21 +52,21 @@ function getObject() {
 	var jsonObject = {
 		floors: [
 			{
-				"Name": undefined,
-				"People": undefined,
-				"SoundLevel": undefined,
+				"name": undefined,
+				"people": undefined,
+				"soundLevel": undefined,
 				"Timestamp": undefined
 			},
 			{
-				"Name": undefined,
-				"People": undefined,
-				"SoundLevel": undefined,
+				"name": undefined,
+				"people": undefined,
+				"soundLevel": undefined,
 				"Timestamp": undefined
 			},
 			{
-				"Name": undefined,
-				"People": undefined,
-				"SoundLevel": undefined,
+				"name": undefined,
+				"people": undefined,
+				"soundLevel": undefined,
 				"Timestamp": undefined
 			}
 		]

@@ -2,11 +2,14 @@ package main
 
 import (
 	"bytes"
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 	"time"
 
 	r "github.com/dancannon/gorethink"
@@ -31,8 +34,8 @@ var (
 // Floor struct to represent a floor in a building
 type Floor struct {
 	Name       string `json:"name"`
-	People     int32  `json:"people"`
-	SoundLevel int32  `json:"soundLevel"`
+	People     int    `json:"people"`
+	SoundLevel int    `json:"soundLevel"`
 }
 
 // Building struct to represent a building
@@ -65,7 +68,7 @@ func main() {
 	// 	Address: "localhost:28015",
 	// })
 	checkError(err)
-	files := []string{"result.json"}
+	files := []string{"result.txt"}
 	startWatchingFiles(files)
 }
 
@@ -130,12 +133,19 @@ func IsInsertNeeded(data Building) bool {
 }
 
 func middleware(jsonInsert string) {
-	var b []Floor
-	err := json.Unmarshal([]byte(jsonInsert), &b)
-	checkError(err)
+	reader := csv.NewReader(strings.NewReader(jsonInsert))
+	lines, _ := reader.ReadAll()
+	var floors []Floor
+	for _, line := range lines {
+		name := line[0]
+		people, _ := strconv.Atoi(line[1])
+		sound, _ := strconv.Atoi(line[2])
+		floor := Floor{name, people, sound}
+		floors = append(floors, floor)
+	}
 
 	t := time.Now()
-	data := Building{b, t.Format(time.RFC3339)}
+	data := Building{floors, t.Format(time.RFC3339)}
 
 	if IsInsertNeeded(data) {
 		//ok := InsertDataToRethink(data)
@@ -152,7 +162,6 @@ func middleware(jsonInsert string) {
 func sendDataToAPI(data Building) bool {
 	url := "http://localhost:3000/insert"
 	dataByte, err := json.Marshal(data)
-	fmt.Println(string(dataByte))
 	checkError(err)
 	req, reqErr := http.NewRequest("POST", url, bytes.NewBuffer(dataByte))
 	checkError(reqErr)
