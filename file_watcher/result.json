@@ -1,0 +1,17 @@
+[
+        {
+                "name": "3A",
+                "people": 50,
+                "soundLevel": 45
+        },
+        {
+                "name": "3B",
+                "people": 50,
+                "soundLevel": 10
+        },
+        {
+                "name": "3C",
+                "people": 5,
+                "soundLevel": 67
+        }
+]
