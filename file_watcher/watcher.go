@@ -12,7 +12,6 @@ import (
 	"strings"
 	"time"
 
-	r "github.com/dancannon/gorethink"
 	"github.com/go-fsnotify/fsnotify"
 )
 
@@ -27,7 +26,6 @@ var (
 	lastInsertData []Floor
 	lastInsertTime time.Time
 	insertNext     bool
-	session        *r.Session
 	waitTime       = 1
 )
 
@@ -63,11 +61,6 @@ func SetLastInsert(f []Floor) {
 }
 
 func main() {
-	var err error
-	// session, err = r.Connect(r.ConnectOpts{
-	// 	Address: "localhost:28015",
-	// })
-	checkError(err)
 	files := []string{"result.txt"}
 	startWatchingFiles(files)
 }
@@ -148,7 +141,6 @@ func middleware(jsonInsert string) {
 	data := Building{floors, t.Format(time.RFC3339)}
 
 	if IsInsertNeeded(data) {
-		//ok := InsertDataToRethink(data)
 		ok := sendDataToAPI(data)
 		if ok {
 			fmt.Printf("Data inserted: %v\n", data)
@@ -180,35 +172,35 @@ func sendDataToAPI(data Building) bool {
 }
 
 // InsertDataToRethink will insert the data that is passed into it
-func InsertDataToRethink(data Building) bool {
-	_, err := r.DB(databaseName).Table(tableName).Insert(data).RunWrite(session)
-	if err != nil {
-		log.Fatal(err)
-		// if strings.Contains(err2.Error(), "Table people_density.test1 does not exist") {
-		// 	fmt.Println("creating missing table...")
-		// 	createMissingComp(false, jsonInsert)
-		// } else if strings.Contains(err2.Error(), "Database `people_density` does not exist") {
-		// 	fmt.Println("creating missing database and table...")
-		// 	createMissingComp(true, jsonInsert)
-		// }
-	}
-	lastInsertTime = time.Now()
-	lastInsertData = data.Floors
-	return true
-}
+// func InsertDataToRethink(data Building) bool {
+// 	_, err := r.DB(databaseName).Table(tableName).Insert(data).RunWrite(session)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 		// if strings.Contains(err2.Error(), "Table people_density.test1 does not exist") {
+// 		// 	fmt.Println("creating missing table...")
+// 		// 	createMissingComp(false, jsonInsert)
+// 		// } else if strings.Contains(err2.Error(), "Database `people_density` does not exist") {
+// 		// 	fmt.Println("creating missing database and table...")
+// 		// 	createMissingComp(true, jsonInsert)
+// 		// }
+// 	}
+// 	lastInsertTime = time.Now()
+// 	lastInsertData = data.Floors
+// 	return true
+// }
 
-func createMissingComp(isDatabase bool, jsonInsert string) {
-	if isDatabase {
-		_, err := r.DBCreate(databaseName).RunWrite(session)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-	_, err := r.DB(databaseName).TableCreate(tableName).RunWrite(session)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("Created missing database/table")
-	fmt.Println("Inserting again")
-	middleware(jsonInsert)
-}
+// func createMissingComp(isDatabase bool, jsonInsert string) {
+// 	if isDatabase {
+// 		_, err := r.DBCreate(databaseName).RunWrite(session)
+// 		if err != nil {
+// 			log.Fatal(err)
+// 		}
+// 	}
+// 	_, err := r.DB(databaseName).TableCreate(tableName).RunWrite(session)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	fmt.Println("Created missing database/table")
+// 	fmt.Println("Inserting again")
+// 	middleware(jsonInsert)
+// }
