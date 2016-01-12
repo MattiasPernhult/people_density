@@ -7,3 +7,5 @@ npm-debug.log
 /rethinkdb_data/
 
 .DS_Store
+
+file_watcher/result.txt

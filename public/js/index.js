@@ -15,13 +15,20 @@ $(document).ready(function() {
         };
 
         $.each(peopleValuesObj, function(i, val) {
-            if (val < 0.45) {//green
-                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(0, 214, 103, 1)');
-            } else if (val < 0.75) {//yellow
-                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(246, 236, 0, 1)');
-            } else { //red
-                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 0, 0, 1)');
+            if (val < 0.15) {
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(102, 255, 102, 1)');
+            } else if (val < 0.30) {
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 255, 102, 1)');
+            } else if (val < 0.45) {
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 217, 102, 1)');
+            } else if (val < 0.60) {
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 179, 102, 1)');
+            } else if (val < 0.75) {
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 140, 102, 1)');
+            } else {
+                $('.floor:nth-child(5) .section').eq(i).css('background', 'rgba(255, 102, 102, 1)');
             }
+
         });
 
         $.each(soundValuesObj, function(i, val) {
