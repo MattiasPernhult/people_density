@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"math"
 	"math/rand"
 	"time"
@@ -17,7 +18,10 @@ func main() {
 		random = getRandom()
 		text += fmt.Sprintf("%s,%v,%d\n", "3C", random, 20)
 
-		ioutil.WriteFile("../result.txt", []byte(text), 0644)
+		err := ioutil.WriteFile("../result.txt", []byte(text), 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
 
 		fmt.Println("Wrote:", random)
 
