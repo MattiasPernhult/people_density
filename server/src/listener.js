@@ -37,9 +37,14 @@ app.get('/chart', function(req, res) {
 
 app.post('/insert', function(req, res) {
     var body = req.body;
+    if (!validateObject(body)) {
+        return res.status(400).send("Error: not inserted");
+    }
     var Building = new BuildingSchema(body);
     Building.save(function(err, b) {
-        if (err) return res.status(500).send("Error: not inserted");
+        if (err)  {
+            return res.status(500).send("Error: not inserted");
+        }
     });
     notifyAllClients(Building);
     return res.status(200).send("Inserted");
@@ -71,27 +76,24 @@ io.on('connection', function(socket) {
 	});
 });
 
+// this function is validate the json body that should be inserted in MongoDB
+var validateObject = function(body) {
+    if (!body.hasOwnProperty('floors')) {
+        return false;
+    }
+    if (!body.hasOwnProperty('timestamp')) {
+        return false;
+    }
+    if (typeof body.floors !== 'object') {
+        return false;
+    }
+    if (typeof body.timestamp !== 'string') {
+        return false;
+    }
+    return true;
+}
+
 // the server will listening on calls on localhost and port 3000
 http.listen(3000, function() {
 	console.log('Server is listening on 3000');
 });
-
-// this function is listening on changes from the rethinkdb
-// if there is an insertion into the db it will send this information to each
-// connected client sockets in the sockets array
-// function start() {
-// 	connection.getConnection(function (err, conn) {
-// 		if (!err) {
-// 			r.db('people_density').table('test1').changes().run(conn, function (err, cursor) {
-// 				if (err) throw err;
-// 				cursor.each(function (err, row) {
-// 					if (err) throw err;
-// 					console.log(JSON.stringify(row, null, 2));
-// 					for (var i = 0; i < sockets.length; i++) {
-// 						sockets[i].emit('data', JSON.stringify(row, null, 2));
-// 					}
-// 				});
-// 			});
-// 		}
-// 	});
-// }

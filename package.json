@@ -20,8 +20,10 @@
   "homepage": "https://github.com/MattiasPernhult/people_density#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "chai": "^3.4.1",
     "express": "~4.13.3",
     "mongoose": "^4.3.4",
+    "request": "^2.67.0",
     "rethinkdb": "~2.2.0",
     "serve-favicon": "^2.3.0",
     "socket.io": "~1.3.7"
