@@ -8,7 +8,7 @@ while [ 1 ];do
    wget http://192.168.1.122/file_out_r2.txt
    wget http://192.168.1.123/file_out_r3.txt
 
-   /home/pi
+   /home/pi/collect
 
    sleep 3
 done;
