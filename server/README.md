@@ -1,13 +1,17 @@
 ## Server
 This is the server part for the solution. The server is written in *Node.js* and are using the *Express* framework and *socket.io* to handle communication with the web clients.
 
+The user interface will be updated in real time.
+
 As storage we are using *MongoDB*.
 
 #### Default endpoint
 The root endpoint will show a heatmap over the people density in the Niagara building.
+![Imgur](http://i.imgur.com/AST57qL.png)
 
 #### Chart endpoint
 This endpoint is accessible by going to /chart. This will show charts over how many people that are in the Niagara building.
+![Imgur](http://i.imgur.com/JvSL7Ay.png)
 
 ### Setting up everything
 
